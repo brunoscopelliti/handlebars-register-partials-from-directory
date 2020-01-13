@@ -1,0 +1,8 @@
+{
+  "extends": ["bruno"],
+  "env": {
+    "node": true
+  },
+  "globals": {
+  }
+}

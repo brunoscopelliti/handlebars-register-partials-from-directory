@@ -4,7 +4,8 @@
   "description": "Register all the view in a given directory as Handlebars partials",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint './index.js'",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,10 @@
   "bugs": {
     "url": "https://github.com/brunoscopelliti/handlebars-register-partials-from-directory/issues"
   },
-  "homepage": "https://github.com/brunoscopelliti/handlebars-register-partials-from-directory#readme"
+  "homepage": "https://github.com/brunoscopelliti/handlebars-register-partials-from-directory#readme",
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-bruno": "2.0.0",
+    "pre-commit": "1.2.2"
+  }
 }
