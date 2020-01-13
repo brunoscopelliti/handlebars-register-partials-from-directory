@@ -16,23 +16,24 @@ const match_ =
  */
 const registerPartials =
   async (hbs, directory, match = match_) => {
-    const content = await fs.readdir(directory);
+    const content = (await fs.readdir(directory))
+      .filter(match);
 
     const reads = [];
 
     for (let i = 0; i < content.length; i++) {
       const filename = content[i];
-      if (match(filename)) {
-        reads.push(
-          fs.readFile(path.resolve(directory, filename), "utf8")
-        );
-      }
+      reads.push(
+        fs.readFile(path.resolve(directory, filename), "utf8")
+      );
     }
 
     const partials = await Promise.all(reads);
 
-    for (let i = 0; i < content.length; i++) {
-      hbs.registerPartial(content[i], partials[i]);
+    for (let i = 0; i < partials.length; i++) {
+      const name = path.parse(content[i]).name;
+
+      hbs.registerPartial(name, partials[i]);
     }
   };
 
