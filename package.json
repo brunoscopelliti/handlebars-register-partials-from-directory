@@ -1,0 +1,26 @@
+{
+  "name": "handlebars-register-partials-from-directory",
+  "version": "0.1.0",
+  "description": "Register all the view in a given directory as Handlebars partials",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunoscopelliti/handlebars-register-partials-from-directory.git"
+  },
+  "keywords": [
+    "handlebars",
+    "partials",
+    "folder",
+    "directory",
+    "registerPartials"
+  ],
+  "author": "Bruno Scopelliti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunoscopelliti/handlebars-register-partials-from-directory/issues"
+  },
+  "homepage": "https://github.com/brunoscopelliti/handlebars-register-partials-from-directory#readme"
+}
