@@ -10,5 +10,5 @@ Coverage 100%.
 const Handlebars = require("handlebars");
 const register = require("handlebars-register-partials-from-directory");
 
-register(Handlebars, "path/to/partials");
+await register(Handlebars, "path/to/partials");
 ```
