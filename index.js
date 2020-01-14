@@ -3,10 +3,18 @@
 const fs = require("fs").promises;
 const path = require("path");
 
-const match_ =
-  (filename) => {
+/**
+ * @typedef {Object} Configuration
+ * @property {Function} match
+ * @property {String} prefix
+ */
+
+const defaults = {
+  match (filename) {
     return path.extname(filename) === ".html";
-  };
+  },
+  prefix: "",
+};
 
 /**
  * @name registerPartials
@@ -15,9 +23,11 @@ const match_ =
  * @param {Configuration} opts
  */
 const registerPartials =
-  async (hbs, directory, match = match_) => {
+  async (hbs, directory, opts) => {
+    opts = { ...defaults, ...opts };
+
     const content = (await fs.readdir(directory))
-      .filter(match);
+      .filter(opts.match);
 
     const reads = [];
 
@@ -33,7 +43,7 @@ const registerPartials =
     for (let i = 0; i < partials.length; i++) {
       const name = path.parse(content[i]).name;
 
-      hbs.registerPartial(name, partials[i]);
+      hbs.registerPartial(opts.prefix + name, partials[i]);
     }
   };
 

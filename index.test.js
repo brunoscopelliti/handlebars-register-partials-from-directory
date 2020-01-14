@@ -37,9 +37,18 @@ test("registerPartials / custom matcher", async () => {
       return filename === "foo.html";
     };
 
-  await registerPartials(Handlebars, path.resolve(__dirname, "fixtures"), match);
+  await registerPartials(Handlebars, path.resolve(__dirname, "fixtures"), { match });
 
   expect(Handlebars.partials).toEqual({
     foo: "This is foo. Yay!",
+  });
+});
+
+test("registerPartials / with prefix", async () => {
+  await registerPartials(Handlebars, path.resolve(__dirname, "fixtures"), { prefix: "layouts/" });
+
+  expect(Handlebars.partials).toEqual({
+    "layouts/foo": "This is foo. Yay!",
+    "layouts/bar": "This is bar... it sucks :(",
   });
 });
